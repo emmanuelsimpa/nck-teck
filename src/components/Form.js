@@ -19,7 +19,17 @@ export default function FormMenu() {
 
     useEffect(()=>{
         // set_isSubmitDisabled(false)
-    }, [ ])
+        // validate
+    }, [ isSubmitDisabled ])
+
+    const validate = () => {
+        if (creditCard.length > 8 && expirationDate.length > 2 && securityCode.length > 2){
+            return set_isSubmitDisabled(false)
+        }
+        else {
+           return set_isSubmitDisabled(true)
+        }
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -29,14 +39,8 @@ export default function FormMenu() {
           postalCode: ""
         },
         validationSchema,
-        onSubmit: () => {
-            if (creditCard.length > 8 && expirationDate.length > 2 && securityCode.length > 2){
-                set_isSubmitDisabled(false)
-            }
-            else {
-                set_isSubmitDisabled(true)
-            }
-        }
+        onSubmit: validate
+            
     });
         
     const creditCard = formik.getFieldMeta("creditCard");

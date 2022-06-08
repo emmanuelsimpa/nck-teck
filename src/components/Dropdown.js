@@ -3,14 +3,14 @@ import { Dropdown, Menu,} from 'antd';
 import {LogoutOutlined, SettingOutlined, GoogleOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
-
+const check = "javascript:void(0)"
 const menu = (
     <Menu
       items={[
         {
           key: '1',
           label: (
-            <a rel="noopener noreferrer" href="javascript:void(0)">
+            <a rel="noopener noreferrer" href={check}>
               Account Settings
             </a>
           ),
@@ -19,7 +19,7 @@ const menu = (
         {
           key: '2',
           label: (
-            <a rel="noopener noreferrer" href="javascript:void(0)">
+            <a rel="noopener noreferrer" href={check}>
               Support
             </a>
           ),
@@ -28,7 +28,7 @@ const menu = (
         {
           key: '3',
           label: (
-            <a rel="noopener noreferrer" href="javascript:void(0)">
+            <a rel="noopener noreferrer" href={check}>
               Sign Out
             </a>
           ),

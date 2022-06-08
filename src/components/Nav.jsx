@@ -10,7 +10,7 @@ export default function Nav() {
             ['RECENTLY VIEWED', '/views'],
             ['BOOKINGS', '/booking'],
         ].map(([title, url]) => (
-            <a href={url} className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">{title}</a>
+            <a href={url} key={title} className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">{title}</a>
         ))}
         <DropdownMenu/>
         </nav>
