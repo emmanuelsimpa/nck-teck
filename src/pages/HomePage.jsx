@@ -24,7 +24,7 @@ export default function HomePage() {
             </div>
         </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 pt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-5">
             <div>
                 {/* <img className="inline-block " src="images/atm.png" alt="Paypal Avater"/> */}
                 <img className="inline-block h-auto w-auto" src="images/atm_one.jpg" alt="Paypal Avater"/>

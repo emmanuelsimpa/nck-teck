@@ -15,19 +15,12 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function FormMenu() {
-    const [isSubmitDisabled, set_isSubmitDisabled] = useState(true)
-
-    useEffect(()=>{
-        // set_isSubmitDisabled(false)
-        // validate
-    }, [ isSubmitDisabled ])
-
     const validate = () => {
         if (creditCard.length > 8 && expirationDate.length > 2 && securityCode.length > 2){
-            return set_isSubmitDisabled(false)
+            console.log("Success")
         }
         else {
-           return set_isSubmitDisabled(true)
+            console.log("Error ")
         }
     }
 
@@ -39,7 +32,9 @@ export default function FormMenu() {
           postalCode: ""
         },
         validationSchema,
-        onSubmit: validate
+        onSubmit: values => {
+            validate(values);
+        }
             
     });
         
@@ -51,7 +46,7 @@ export default function FormMenu() {
   return (
     <div>
        <form >
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font mb-2"
@@ -60,23 +55,12 @@ export default function FormMenu() {
             Credit Card
           </label>
           <CreditCardInput
-            cardNumberInputProps={ formik.getFieldProps("creditCard")}
-            cardExpiryInputProps={ formik.getFieldProps("expirationDate")}
-            cardCVCInputProps={ formik.getFieldProps("securityCode")}
+            cardNumberInputProps={ formik.getFieldProps("creditCard").isValid}
+            cardExpiryInputProps={ formik.getFieldProps("expirationDate").isValid}
+            cardCVCInputProps={ formik.getFieldProps("securityCode").isValid}
             fieldClassName="input"
             containerClassName="border"
            />
-           
-          {/* <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="creditCard"
-            type="text"
-            placeholder="credit card number"
-            {...formik.getFieldProps("creditCard")}
-          /> */}
-          {/* {creditCard.error && (
-            <p className="text-red-500 text-xs italic">{creditCard.error}</p>
-          )} */}
           <div />
         </div>
         <div className="mb-4">
@@ -100,7 +84,7 @@ export default function FormMenu() {
           <div />
         </div>
         </div>
-        <div className='grid grid-cols-2 gap-4 pt-5'>
+        <div className='grid grid-cols-1 md:grid-cols-2  gap-4 pt-5'>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font mb-2"
@@ -146,7 +130,7 @@ export default function FormMenu() {
           <button
             className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
-            disabled={isSubmitDisabled}
+            disabled={!(formik.isValid && formik.dirty)}
           >
             Submit
           </button>
