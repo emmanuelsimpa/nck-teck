@@ -55,9 +55,9 @@ export default function FormMenu() {
             Credit Card
           </label>
           <CreditCardInput
-            cardNumberInputProps={ formik.getFieldProps("creditCard").isValid}
-            cardExpiryInputProps={ formik.getFieldProps("expirationDate").isValid}
-            cardCVCInputProps={ formik.getFieldProps("securityCode").isValid}
+            cardNumberInputProps={ formik.getFieldProps("creditCard")}
+            cardExpiryInputProps={ formik.getFieldProps("expirationDate")}
+            cardCVCInputProps={ formik.getFieldProps("securityCode")}
             fieldClassName="input"
             containerClassName="border"
            />
