@@ -3,14 +3,13 @@ import { Dropdown, Menu,} from 'antd';
 import {LogoutOutlined, SettingOutlined, GoogleOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
-const check = "javascript:void(0)"
 const menu = (
     <Menu
       items={[
         {
           key: '1',
           label: (
-            <a rel="noopener noreferrer" href={check}>
+            <a rel="noopener noreferrer" href="0:#">
               Account Settings
             </a>
           ),
@@ -19,7 +18,7 @@ const menu = (
         {
           key: '2',
           label: (
-            <a rel="noopener noreferrer" href={check}>
+            <a rel="noopener noreferrer" href="0:#">
               Support
             </a>
           ),
@@ -28,7 +27,7 @@ const menu = (
         {
           key: '3',
           label: (
-            <a rel="noopener noreferrer" href={check}>
+            <a rel="noopener noreferrer" href="0:#">
               Sign Out
             </a>
           ),
@@ -48,7 +47,7 @@ export default function DropdownMenu() {
   return (
     <div>
         <Dropdown overlay={menu}>
-            <a onClick={(e) => e.preventDefault()}>
+            <a onClick={(e) => e.preventDefault()} href>
             <img className="inline-block h-8 w-8 rounded-full" src="images/img_one.jpg" alt="User Avater"/>
             </a>
         </Dropdown>
